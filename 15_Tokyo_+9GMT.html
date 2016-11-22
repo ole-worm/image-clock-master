@@ -1,0 +1,281 @@
+<!-- 
+      ___           ___           ___           ___           ___                    ___           ___           ___                    
+     /\__\         /\  \         /\  \         /\  \         /\  \                  /\__\         /\__\         /\__\                   
+    /:/ _/_       /::\  \       /::\  \       /::\  \        \:\  \                /:/ _/_       /::|  |       /:/ _/_                  
+   /:/ /\  \     /:/\:\  \     /:/\:\__\     /:/\:\  \        \:\  \              /:/ /\  \     /:/:|  |      /:/ /\__\                 
+  /:/ /::\  \   /:/ /::\  \   /:/ /:/  /    /:/ /::\  \   ___ /::\  \            /:/ /::\  \   /:/|:|  |__   /:/ /:/ _/_                
+ /:/_/:/\:\__\ /:/_/:/\:\__\ /:/_/:/__/___ /:/_/:/\:\__\ /\  /:/\:\__\          /:/_/:/\:\__\ /:/ |:| /\__\ /:/_/:/ /\__\               
+ \:\/:/ /:/  / \:\/:/  \/__/ \:\/:::::/  / \:\/:/  \/__/ \:\/:/  \/__/          \:\/:/ /:/  / \/__|:|/:/  / \:\/:/ /:/  /               
+  \::/ /:/  /   \::/__/       \::/~~/~~~~   \::/__/       \::/__/                \::/ /:/  /      |:/:/  /   \::/_/:/  /                
+   \/_/:/  /     \:\  \        \:\~~\        \:\  \        \:\  \                 \/_/:/  /       |::/  /     \:\/:/  /                 
+     /:/  /       \:\__\        \:\__\        \:\__\        \:\__\                  /:/  /        |:/  /       \::/  /                  
+     \/__/         \/__/         \/__/         \/__/         \/__/                  \/__/         |/__/         \/__/                   
+                                ___           ___           ___           ___           ___           ___         ___           ___     
+                               /\  \         /\__\         /|  |         /\__\         /\__\         /\  \       /\__\         /\  \    
+      ___         ___         |::\  \       /:/ _/_       |:|  |        /:/ _/_       /:/ _/_       /::\  \     /:/ _/_       /::\  \   
+     /\__\       /\__\        |:|:\  \     /:/ /\__\      |:|  |       /:/ /\__\     /:/ /\__\     /:/\:\__\   /:/ /\__\     /:/\:\__\  
+    /:/  /      /:/__/      __|:|\:\  \   /:/ /:/ _/_   __|:|  |      /:/ /:/ _/_   /:/ /:/ _/_   /:/ /:/  /  /:/ /:/ _/_   /:/ /:/  /  
+   /:/__/      /::\  \     /::::|_\:\__\ /:/_/:/ /\__\ /\ |:|__|____ /:/_/:/ /\__\ /:/_/:/ /\__\ /:/_/:/  /  /:/_/:/ /\__\ /:/_/:/__/___
+  /::\  \      \/\:\  \__  \:\~~\  \/__/ \:\/:/ /:/  / \:\/:::::/__/ \:\/:/ /:/  / \:\/:/ /:/  / \:\/:/  /   \:\/:/ /:/  / \:\/:::::/  /
+ /:/\:\  \      ~~\:\/\__\  \:\  \        \::/_/:/  /   \::/~~/~      \::/_/:/  /   \::/_/:/  /   \::/__/     \::/_/:/  /   \::/~~/~~~~ 
+ \/__\:\  \        \::/  /   \:\  \        \:\/:/  /     \:\~~\        \:\/:/  /     \:\/:/  /     \:\  \      \:\/:/  /     \:\~~\     
+      \:\__\       /:/  /     \:\__\        \::/  /       \:\__\        \::/  /       \::/  /       \:\__\      \::/  /       \:\__\    
+       \/__/       \/__/       \/__/         \/__/         \/__/         \/__/         \/__/         \/__/       \/__/         \/__/    
+
+-->
+
+<html>
+<head>
+<title>Tokyo</title>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<meta name="author" content="github.com/jamesgarrett">
+
+<style>
+
+  body{
+    margin:0px;
+  }
+
+  .over{
+    position:fixed;
+    width:320px;
+    height:240px;
+      top: 0;
+      left: 0;
+    z-index:1;
+  }
+
+  .under {
+      height: 240px;
+      width: 320px;
+      padding: 45px 0;
+      margin: 0px;
+      background: black;
+      text-align: center;
+  }
+
+  .wrap {
+    color: white;
+    background: black;
+    font-family: 'helveticaneue','helvetica';
+    text-transform: uppercase;
+    display:table;
+    width:100%;
+    height:100%;
+    /*z-index:0;*/
+  }
+
+  .under h4{
+    line-height:1.1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top:10px;
+    font-size: 18px;
+      letter-spacing: 0.4rem;
+  }
+
+  .under span {
+      font-size: 32px;
+      letter-spacing: 0.3rem;
+  }
+
+
+  #time, #date, #power, #runtime, #countdown, #zeros{
+    font-size: 2.5rem;
+    font-weight:normal;
+  }
+
+  .panel-right{
+    width:100%;
+  }
+
+  .hiding{
+    visibility:hidden;
+  }
+  .visible{
+    visibility: visible!important;
+      position: fixed;
+      top: 0;
+      left: 0;
+  }
+
+  span#time > span {
+      display: inline-block;
+  } 
+
+  span#time{
+    top:104px;
+  }
+
+  span#date {
+      top: 165px;
+  }
+
+</style>
+
+<script type="text/javascript">
+	var refresh=1000; // Refresh rate in milli seconds
+	mytime=setInterval('display_ct()',refresh);
+
+	utc_zone = 9;
+	utc_adjust = -5;
+
+	// get the current timestamp - format the clock readout
+
+	function display_ct() {
+	var strcount
+	var x = new Date()
+	var seconds = x.getSeconds();
+	var minutes = x.getMinutes();
+	var hours = x.getHours();
+	var pm = false;
+
+	// check if the city is in our timezone, if not make the necessary adjustment
+
+	if (utc_zone == -5){
+	}else{
+		utc_hours = (utc_zone - utc_adjust);
+	}
+
+	var adjusted_hours = (hours + utc_hours);
+	
+	// check if it is am, pm, or am of the next day
+
+	if (adjusted_hours > 12) {
+		new_hours = (adjusted_hours - 12); 
+		pm = true;
+		if (adjusted_hours > 24){
+			new_hours = (adjusted_hours - 24);
+			pm = false;
+			console.log(new_hours);
+		}else{}
+	}
+	else { 
+		new_hours = adjusted_hours;
+		pm = false;
+	}
+
+
+	// print formatted date
+
+	formatted_time = new_hours+':'+('0'  + minutes).slice(-2)+':'+('0' + seconds).slice(-2);
+
+	document.getElementById('date').innerHTML = formatted_date;
+
+	if (adjusted_hours > 12 && adjusted_hours < 24){ 
+			document.getElementById('time').innerHTML = formatted_time + '<span style="padding-left:15px;">PM</span>';}
+		else{
+			document.getElementById('time').innerHTML = formatted_time + '<span style="padding-left:15px;">AM</span>';
+		}
+	tt=display_c();
+	}
+
+	// refresh clock readout each second
+
+	function display_c(){
+	var refresh=1000; // Refresh rate in milli seconds
+	mytime=setTimeout('display_ct()',refresh)
+	}
+
+	// build array for months of the year
+
+	var m_names = new Array("January", "February", "March", 
+	"April", "May", "June", "July", "August", "September", 
+	"October", "November", "December");
+
+	// format date readout
+
+	var today = new Date();
+	var hours = today.getHours();
+	var curr_date = today.getDate();
+	var curr_month = today.getMonth();
+	var curr_year = today.getFullYear();
+
+	// find out if we need to adjust date for utc
+
+	if (utc_zone == -5){
+		console.log('usa! usa!');
+		utc_hours = (utc_zone - utc_adjust);
+	}else{
+		utc_hours = (utc_zone - utc_adjust);
+	}
+	
+	var adjusted_hours = (hours + utc_hours);
+
+	// create adjustment date
+
+	var tomorrow = new Date(today);
+	var tomorrow_date = tomorrow.getDate() + 1;
+	var tomorrow_month = tomorrow.getMonth();
+
+	console.log(tomorrow_date);
+	console.log(adjusted_hours);
+
+	// print nicely formatted date
+
+	if (adjusted_hours > 24){
+		var formatted_date = (m_names[curr_month] + " " + tomorrow_date + "," + " " + curr_year);
+	} else {
+		var formatted_date = (m_names[tomorrow_month] + " " + curr_date + "," + " " + curr_year);
+	}
+</script>
+
+<script type="text/javascript">
+	//assign your api key equal to a variable
+	var apiKey = 'b30dc72750a3f089c77c61f800289a1e';
+	//specify tags
+	var tags ='Tokyo';
+	//specify number of results
+	var per_page = '500';
+
+	url = 'https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key='+ apiKey +'&tags='+ tags +'&format=json&sort=random&per_page='+ per_page +';jsoncallback=?';
+	
+	$(function(){
+				
+		//the initial json request to flickr
+		console.log(url);
+		$.getJSON(url, function(response){
+			            
+        });
+    });
+</script>
+
+<script type="text/javascript">
+
+</script>
+
+<script type="text/javascript" src="../image-loader.js"></script>
+
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+
+<meta http-equiv="refresh" content="3600"> <!-- This is the refresh Timer - It resets the page every 3600 seconds, 1 hour -->
+</head>
+
+<body onload="display_ct();makeVisible();">
+	<div class="wrap">
+		<div class="under">
+			
+                <span id='city'>Tokyo<br></span>
+            
+                <span id='time' height="50" style="font-size:30px;"></span>
+            
+                <span id='date' height="50" style="font-size:30px;"></span>
+        </div>
+		<div class="over">
+			<span id="image-container" class="container"></span>
+		</div>
+	</div>
+</body>
+
+<footer>
+</footer>
+
+</html>

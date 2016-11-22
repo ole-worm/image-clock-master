@@ -1,0 +1,180 @@
+<!-- 
+      ___           ___           ___           ___           ___                    ___           ___           ___                    
+     /\__\         /\  \         /\  \         /\  \         /\  \                  /\__\         /\__\         /\__\                   
+    /:/ _/_       /::\  \       /::\  \       /::\  \        \:\  \                /:/ _/_       /::|  |       /:/ _/_                  
+   /:/ /\  \     /:/\:\  \     /:/\:\__\     /:/\:\  \        \:\  \              /:/ /\  \     /:/:|  |      /:/ /\__\                 
+  /:/ /::\  \   /:/ /::\  \   /:/ /:/  /    /:/ /::\  \   ___ /::\  \            /:/ /::\  \   /:/|:|  |__   /:/ /:/ _/_                
+ /:/_/:/\:\__\ /:/_/:/\:\__\ /:/_/:/__/___ /:/_/:/\:\__\ /\  /:/\:\__\          /:/_/:/\:\__\ /:/ |:| /\__\ /:/_/:/ /\__\               
+ \:\/:/ /:/  / \:\/:/  \/__/ \:\/:::::/  / \:\/:/  \/__/ \:\/:/  \/__/          \:\/:/ /:/  / \/__|:|/:/  / \:\/:/ /:/  /               
+  \::/ /:/  /   \::/__/       \::/~~/~~~~   \::/__/       \::/__/                \::/ /:/  /      |:/:/  /   \::/_/:/  /                
+   \/_/:/  /     \:\  \        \:\~~\        \:\  \        \:\  \                 \/_/:/  /       |::/  /     \:\/:/  /                 
+     /:/  /       \:\__\        \:\__\        \:\__\        \:\__\                  /:/  /        |:/  /       \::/  /                  
+     \/__/         \/__/         \/__/         \/__/         \/__/                  \/__/         |/__/         \/__/                   
+                                ___           ___           ___           ___           ___           ___         ___           ___     
+                               /\  \         /\__\         /|  |         /\__\         /\__\         /\  \       /\__\         /\  \    
+      ___         ___         |::\  \       /:/ _/_       |:|  |        /:/ _/_       /:/ _/_       /::\  \     /:/ _/_       /::\  \   
+     /\__\       /\__\        |:|:\  \     /:/ /\__\      |:|  |       /:/ /\__\     /:/ /\__\     /:/\:\__\   /:/ /\__\     /:/\:\__\  
+    /:/  /      /:/__/      __|:|\:\  \   /:/ /:/ _/_   __|:|  |      /:/ /:/ _/_   /:/ /:/ _/_   /:/ /:/  /  /:/ /:/ _/_   /:/ /:/  /  
+   /:/__/      /::\  \     /::::|_\:\__\ /:/_/:/ /\__\ /\ |:|__|____ /:/_/:/ /\__\ /:/_/:/ /\__\ /:/_/:/  /  /:/_/:/ /\__\ /:/_/:/__/___
+  /::\  \      \/\:\  \__  \:\~~\  \/__/ \:\/:/ /:/  / \:\/:::::/__/ \:\/:/ /:/  / \:\/:/ /:/  / \:\/:/  /   \:\/:/ /:/  / \:\/:::::/  /
+ /:/\:\  \      ~~\:\/\__\  \:\  \        \::/_/:/  /   \::/~~/~      \::/_/:/  /   \::/_/:/  /   \::/__/     \::/_/:/  /   \::/~~/~~~~ 
+ \/__\:\  \        \::/  /   \:\  \        \:\/:/  /     \:\~~\        \:\/:/  /     \:\/:/  /     \:\  \      \:\/:/  /     \:\~~\     
+      \:\__\       /:/  /     \:\__\        \::/  /       \:\__\        \::/  /       \::/  /       \:\__\      \::/  /       \:\__\    
+       \/__/       \/__/       \/__/         \/__/         \/__/         \/__/         \/__/         \/__/       \/__/         \/__/    
+
+-->
+
+<html>
+<head>
+<title>Timekeeper</title>
+
+<meta name="author" content="github.com/jamesgarrett">
+
+<script type="text/javascript">
+
+	var width=1920;
+	var height=1080;
+
+	self.moveTo((screen.availWidth-width)/2,(screen.availHeight-height)/2);
+	self.resizeTo(width,height);
+	
+</script>
+
+<style type="text/css">
+
+	body {
+		background:black;
+		height:100%;
+		width:100%;
+		padding:25vh 0;
+	}
+	body h1 {
+		font-family: helvetica neue, helvetica, sans-serif;
+		font-size: 4rem;
+		text-align: center;
+		margin: 0 auto;
+		display:block;
+		color:white;
+	}
+	body h4 {
+		font-size: 1.125rem;
+		font-family: helvetica neue, helvetica, sans-serif;
+		text-align: center;
+		margin: 0 auto;
+		display:block;
+		color:white;
+	}
+
+	@keyframes spin {
+	  0% {
+	    transform: rotate(0deg);
+	  }
+	  100% {
+	    transform: rotate(360deg);
+	  }
+	}
+
+	@keyframes pulse {	
+	  50% { 
+	    background: #fff;
+	  } 
+	}
+
+	html {
+	  height: 100%;
+	}
+
+	.loading {
+	    border-radius: 50%;
+	    width: 24px;
+	    height: 24px;
+	    border: .25rem solid rgba(255,255,255,0.2);
+	    border-top-color: #fff;
+	    animation: spin 1s infinite; 
+	    margin:12px auto;
+	    text-align: center;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<h1>Timekeeper</h1>
+	<div class="loading"></div>
+
+</body>
+
+<footer>
+
+
+
+	<script type="text/javascript">
+
+	// window I
+		window.open('01_New_York_-5GMT.html','popUpWindow1','width=320,height=240,left=0,top=30,toolbar=no,titlebar=no, menubar=no, location=no,resizable=no');
+		window.open('02_Santiago_-4GMT.html','popUpWindow2','width=320,height=240,left=320,top=30,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('03_Sao_Paulo_-3GMT.html','popUpWindow3','width=370,height=240,left=640,top=35,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('04_South_Georgia_Islands_-2GMT.html','popUpWindow4','width=320,height=240,left=1000,top=35,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('05_Cape_Verde_Islands_-1GMT.html','popUpWindow5','width=320,height=240,left=1346,top=505,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('mask.html','mask01','width=320,height=240,left=1346,top=505,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('mask.html','mask02','width=320,height=240,left=1346,top=505,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+	// window II
+		window.open('16_Sydney_+10GMT.html','popUpWindow6','width=420,height=240,left=1954,top=244,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('17_Solomon_Island_+11GMT.html','popUpWindow7','width=420,height=240,left=3263,top=50,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('18_Fiji_+12GMT.html','popUpWindow8','width=420,height=240,left=2564,top=288,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('19_Midway_Islands_-11GMT.html','popUpWindow9','width=420,height=240,left=2954,top=309,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('mask.html','mask03','width=420,height=240,left=2954,top=309,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('mask.html','mask04','width=320,height=240,left=1346,top=505,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+
+	// window III
+		window.open('07_Frankfort_+1GMT.html','popUpWindow10','width=350,height=240,left=4188,top=343,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('08_Cairo_+2GMT.html','popUpWindow11','width=360,height=240,left=4542,top=343,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('09_Moscow_+3GMT.html','popUpWindow12','width=407,height=240,left=4949,top=343,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('10_Dubai_+4GMT.html','popUpWindow13','width=320,height=240,left=5340,top=343,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('10_Dubai_+4GMT.html','popUpWindow14','width=320,height=240,left=5340,top=343,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('mask.html','mask05','width=320,height=240,left=5340,top=343,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+
+	// window IV
+		window.open('13_Bangkok_+7GMT.html','popUpWindow15','width=360,height=240,left=6440,top=346,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('14_Beijing_+8GMT.html','popUpWindow16','width=360,height=240,left=6800,top=346,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('15_Tokyo_+9GMT.html','popUpWindow17','width=440,height=240,left=7160,top=346,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		// new row
+		window.open('01_New_York_-5GMT.html','popUpWindow18','width=360,height=365,left=5760,top=35,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('06_London_0GMT.html','popUpWindow19','width=360,height=365,left=6080,top=35,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('11_Delhi_+5GMT.html',,'popUpWindow20','width=360,height=365,left=6440,top=34,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('22_Los_Angeles_-8GMT.html','popUpWindow21','width=360,height=365,left=6800,top=34,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('mask.html','mask06','width=360,height=365,left=6800,top=34,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('mask.html','mask07','width=360,height=365,left=6800,top=34,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		
+	// window V
+		// new row
+		window.open('11_Delhi_+5GMT.html','popUpWindow21','width=360,height=240,left=8710,top=585,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		// new row
+		window.open('06_London_0GMT.html','popUpWindow22','width=360,height=300,left=8359,top=330,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('21_Anchorage_-9GMT.html','popUpWindow23','width=360,height=300,left=8710,top=330,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('20_Honolulu_-10GMT.html','popUpWindow24','width=360,height=300,left=9070,top=330,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		// new row
+		window.open('02_Santiago_-4GMT.html','popUpWindow25','width=375,height=330,left=7990,top=30,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('03_Sao_Paulo_-3GMT.html','popUpWindow26','width=360,height=330,left=8359,top=30,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('mask.html','mask08','width=360,height=330,left=8359,top=30,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		window.open('mask.html','mask09','width=360,height=330,left=8359,top=30,toolbar=no,titlebar=no, menubar=no, location=no,resizable=yes');
+		
+		
+	// Window VI
+		window.open('22_Los_Angeles_-8GMT.html','popUpWindow27','width=420,height=240,left=10611,top=309,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('23_Edmonton_-7GMT.html','popUpWindow28','width=420,height=240,left=10946,top=289,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('24_Mexico_-6GMT.html','popUpWindow29','width=420,height=240,left=11260,top=475,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('mask.html','mask010','width=420,height=240,left=11260,top=475,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+		window.open('mask.html','mask011','width=420,height=240,left=11260,top=475,resizable=no,scrollbars=no,toolbar=no,titlebar=no,menubar=no,location=no');
+
+	</script>
+
+	
+	<script type="text/javascript">
+		window.close();
+	</script>
+
+</footer>
+
+</html>
