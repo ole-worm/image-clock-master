@@ -123,11 +123,11 @@
 	utc_zone = -5;
 	utc_adjust = -5;
 
-	// get the current timestamp - format the clock readout
+	// get the fnt timestamp - format the clock readout
 
-	function display_ct() {
+	function display_ct(timestamp) {
 	var strcount
-	var x = new Date()
+	var x = new Date(timestamp)
 	var seconds = x.getSeconds();
 	var minutes = x.getMinutes();
 	var hours = x.getHours();
